@@ -25,14 +25,13 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
+/* $XFree86: xc/lib/Xau/AuGetAddr.c,v 1.5 2001/12/14 19:54:36 dawes Exp $ */
 
 #include <X11/Xauth.h>
 #include <X11/Xos.h>
 
-static
-binaryEqual (a, b, len)
-register char	*a, *b;
-register int	len;
+static int
+binaryEqual (_Xconst char *a, _Xconst char *b, int len)
 {
     while (len--)
 	if (*a++ != *b++)
@@ -96,10 +95,8 @@ char	*name;
 	/*
 	 * Match when:
 	 *   either family or entry->family are FamilyWild or
-	 *    family and entry->family are the same
-	 *  and
-	 *   either address or entry->address are empty or
-	 *    address and entry->address are the same
+	 *    family and entry->family are the same and
+	 *     address and entry->address are the same
 	 *  and
 	 *   either number or entry->number are empty or
 	 *    number and entry->number are the same

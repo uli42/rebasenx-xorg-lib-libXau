@@ -25,8 +25,10 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
+/* $XFree86: xc/lib/Xau/AuDispose.c,v 1.5 2001/12/14 19:54:36 dawes Exp $ */
 
 #include <X11/Xauth.h>
+#include <stdlib.h>
 
 void
 XauDisposeAuth (auth)

@@ -25,13 +25,13 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
+/* $XFree86: xc/lib/Xau/AuRead.c,v 1.6 2001/12/14 19:54:36 dawes Exp $ */
 
 #include <X11/Xauth.h>
+#include <stdlib.h>
 
-static
-read_short (shortp, file)
-unsigned short	*shortp;
-FILE		*file;
+static int
+read_short (unsigned short *shortp, FILE *file)
 {
     unsigned char   file_short[2];
 
@@ -41,14 +41,11 @@ FILE		*file;
     return 1;
 }
 
-static
-read_counted_string (countp, stringp, file)
-unsigned short	*countp;
-char	**stringp;
-FILE	*file;
+static int
+read_counted_string (unsigned short *countp, char **stringp, FILE *file)
 {
     unsigned short  len;
-    char	    *data, *malloc ();
+    char	    *data;
 
     if (read_short (&len, file) == 0)
 	return 0;
@@ -75,7 +72,6 @@ FILE	*auth_file;
 {
     Xauth   local;
     Xauth   *ret;
-    char    *malloc ();
 
     if (read_short (&local.family, auth_file) == 0)
 	return 0;
