@@ -25,13 +25,12 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
+/* $XFree86: xc/lib/Xau/AuWrite.c,v 1.4 2001/12/14 19:54:36 dawes Exp $ */
 
 #include <X11/Xauth.h>
 
-static
-write_short (s, file)
-unsigned short	s;
-FILE		*file;
+static int
+write_short (unsigned short s, FILE *file)
 {
     unsigned char   file_short[2];
 
@@ -42,11 +41,8 @@ FILE		*file;
     return 1;
 }
 
-static
-write_counted_string (count, string, file)
-unsigned short	count;
-char	*string;
-FILE	*file;
+static int
+write_counted_string (unsigned short count, char *string, FILE *file)
 {
     if (write_short (count, file) == 0)
 	return 0;
@@ -60,8 +56,6 @@ XauWriteAuth (auth_file, auth)
 FILE	*auth_file;
 Xauth	*auth;
 {
-    char    *malloc ();
-
     if (write_short (auth->family, auth_file) == 0)
 	return 0;
     if (write_counted_string (auth->address_length, auth->address, auth_file) == 0)

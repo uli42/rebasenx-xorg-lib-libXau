@@ -25,19 +25,14 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
+/* $XFree86: xc/lib/Xau/AuLock.c,v 3.6 2002/05/31 18:45:43 dawes Exp $ */
 
 #include <X11/Xauth.h>
 #include <X11/Xos.h>
 #include <sys/stat.h>
 #include <errno.h>
-#ifdef X_NOT_STDC_ENV
-extern int errno;
-#define Time_t long
-extern Time_t time ();
-#else
 #include <time.h>
 #define Time_t time_t
-#endif
 #ifndef X_NOT_POSIX
 #include <unistd.h>
 #else
@@ -46,6 +41,9 @@ extern unsigned	sleep ();
 #else
 #define link rename
 #endif
+#endif
+#ifdef __UNIXOS2__
+#define link rename
 #endif
 
 #if NeedFunctionPrototypes
@@ -89,7 +87,7 @@ long	dead;
     
     while (retries > 0) {
 	if (creat_fd == -1) {
-	    creat_fd = creat (creat_name, 0666);
+	    creat_fd = open (creat_name, O_WRONLY | O_CREAT | O_EXCL, 0600);
 	    if (creat_fd == -1) {
 		if (errno != EACCES)
 		    return LOCK_ERROR;

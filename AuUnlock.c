@@ -25,10 +25,12 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
+/* $XFree86: xc/lib/Xau/AuUnlock.c,v 1.4 2001/12/14 19:54:36 dawes Exp $ */
 
 #include <X11/Xauth.h>
 #include <X11/Xos.h>
 
+int
 #if NeedFunctionPrototypes
 XauUnlockAuth (
 _Xconst char *file_name)
@@ -43,7 +45,7 @@ char	*file_name;
     char	link_name[1025];
 
     if (strlen (file_name) > 1022)
-	return;
+	return 0;
 #ifndef WIN32
     (void) strcpy (creat_name, file_name);
     (void) strcat (creat_name, "-c");
@@ -57,4 +59,6 @@ char	*file_name;
     (void) unlink (creat_name);
 #endif
     (void) unlink (link_name);
+
+    return 1;
 }

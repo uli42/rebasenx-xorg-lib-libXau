@@ -25,15 +25,17 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
+/* $XFree86: xc/lib/Xau/AuFileName.c,v 3.7 2001/12/14 19:54:36 dawes Exp $ */
 
 #include <X11/Xauth.h>
 #include <X11/Xos.h>
+#include <stdlib.h>
 
 char *
 XauFileName ()
 {
     char *slashDotXauthority = "/.Xauthority";
-    char    *name, *malloc (), *getenv ();
+    char    *name;
     static char	*buf;
     static int	bsize;
 #ifdef WIN32
