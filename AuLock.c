@@ -39,6 +39,7 @@ in this Software without prior written authorization from The Open Group.
 #ifndef WIN32
 extern unsigned	sleep ();
 #else
+#include <X11/Xwindows.h>
 #define link rename
 #endif
 #endif

@@ -49,7 +49,7 @@ XauFileName ()
     if (!name) {
 #ifdef WIN32
 	(void) strcpy (dir, "/users/");
-	if (name = getenv("USERNAME")) {
+	if ((name = getenv("USERNAME"))) {
 	    (void) strcat (dir, name);
 	    name = dir;
 	}
