@@ -1,7 +1,5 @@
 lib_LTLIBRARIES = libXau.la
 
-AM_CFLAGS=-include config.h $(XAU_CFLAGS)
-
 libXau_la_LDFLAGS = -version-number 6:0:0 -no-undefined
 
 libXau_la_LIBADD = $(XAU_LIBS)
