@@ -1,5 +1,9 @@
 lib_LTLIBRARIES = libXau.la
 
+AM_CFLAGS = $(XAU_CFLAGS)
+
+INCLUDES = -I${top_srcdir}/include
+
 libXau_la_LDFLAGS = -version-number 6:0:0 -no-undefined
 
 libXau_la_LIBADD = $(XAU_LIBS)
@@ -20,7 +24,7 @@ endif KERBEROS
 
 xauincludedir=$(includedir)/X11
 
-xauinclude_HEADERS = Xauth.h
+xauinclude_HEADERS = include/X11/Xauth.h
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = xau.pc
