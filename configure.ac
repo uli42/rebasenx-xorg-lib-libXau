@@ -25,7 +25,7 @@ dnl Process this file with autoconf to create configure.
 
 AC_PREREQ([2.57])
 AC_INIT(libXau, [0.1.2], [keithp@keithp.com],libXau)
-AM_INIT_AUTOMAKE([1.7], [dist-bzip2])
+AM_INIT_AUTOMAKE([dist-bzip2])
 AM_MAINTAINER_MODE
 
 AM_CONFIG_HEADER(config.h)
