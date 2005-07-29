@@ -24,7 +24,7 @@ dnl
 dnl Process this file with autoconf to create configure.
 
 AC_PREREQ([2.57])
-AC_INIT(libXau, [0.1.2], [keithp@keithp.com],libXau)
+AC_INIT(libXau, 0.99.0, [https://bugs.freedesktop.org/enter_bug.cgi?product=xorg],libXau)
 AM_INIT_AUTOMAKE([dist-bzip2])
 AM_MAINTAINER_MODE
 
@@ -50,6 +50,8 @@ if test "x$GCC" = "xyes"; then
 	-Wnested-externs -fno-strict-aliasing"
 	XAU_CFLAGS="$GCC_WARNINGS $XAU_CFLAGS"
 fi
+
+XORG_RELEASE_VERSION
 
 AC_OUTPUT([Makefile
            xau.pc])
