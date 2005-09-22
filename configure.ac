@@ -44,6 +44,24 @@ AC_SUBST(XAU_LIBS)
 kerberos=false
 AM_CONDITIONAL(KERBEROS, test x$kerberos = xtrue)
 
+AC_ARG_ENABLE(xthreads,
+              AC_HELP_STRING([--disable-xthreads],
+                [Disable libXau support for Multithreading]),
+              [xthreads=$enableval],[xthreads=yes])
+
+if test "x$xthreads" = "xyes" ; then
+    AC_DEFINE(XTHREADS,1,[Whether libXau is compiled with thread support])
+    AC_CHECK_LIB(c, gethostbyname_r, AC_DEFINE(XUSE_MTSAFE_API,1,
+			[Whether libXau needs to use MT safe API's]))
+
+dnl XXX incomplete, please fill this in
+    case $host_os in
+    solaris*)
+	XTHREAD_CFLAGS="-D_REENTRANT -D_POSIX_PTHREAD_SEMANTICS" ;;
+    esac
+    XAU_CFLAGS="$XAU_CFLAGS $XTHREAD_CFLAGS"
+fi
+
 if test "x$GCC" = "xyes"; then
 	GCC_WARNINGS="-Wall -Wpointer-arith -Wstrict-prototypes \
 	-Wmissing-prototypes -Wmissing-declarations \

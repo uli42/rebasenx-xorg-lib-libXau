@@ -1,3 +1,8 @@
+2005-09-21  Alan Coopersmith  <alan.coopersmith@sun.com>
+
+	* configure.ac: 
+	Set needed flags for MT-safe API's called from libXau
+
 2005-07-08  Keith Packard  <keithp@keithp.com>
 
 	* .cvsignore:
