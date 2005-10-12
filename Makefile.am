@@ -29,6 +29,34 @@ xauinclude_HEADERS = include/X11/Xauth.h
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = xau.pc
 
-man_MANS = Xau.3
+libmandir = $(mandir)/man$(LIB_MAN_SUFFIX)
+libman_SOURCES = Xau.man
+BUILT_SOURCES = .shadows.DONE
+CLEANFILES = $(libman_DATA)
+libman_DATA = $(libman_SOURCES:man=$(LIB_MAN_SUFFIX)) \
+	      $(Xau_shadows:=.$(LIB_MAN_SUFFIX))
 
-EXTRA_DIST = xau.pc.in Autest.c $(man_MANS)
+EXTRA_DIST = xau.pc.in Autest.c $(libman_SOURCES)
+
+Xau_shadows =                               \
+    XauFileName                             \
+    XauReadAuth                             \
+    XauLockAuth                             \
+    XauUnlockAuth                           \
+    XauWriteAuth                            \
+    XauDisposeAuth                          \
+    XauGetAuthByAddr                        \
+    XauGetBestAuthByAddr
+
+.shadows.DONE:
+	-rm -f $(Xau_shadows:=.$(LIB_MAN_SUFFIX))
+	(for i in $(Xau_shadows:=.$(LIB_MAN_SUFFIX)) ; do \
+	 echo .so man$(LIB_MAN_SUFFIX)/Xau.$(LIB_MAN_SUFFIX) > $$i; \
+	 done)
+
+XORGRELSTRING = @PACKAGE_STRING@
+  XORGMANNAME = X Version 11
+
+Xau.$(LIB_MAN_SUFFIX): $(srcdir)/Xau.man
+	sed 's/__xorgversion__/"$(XORGRELSTRING)" "$(XORGMANNAME)"/' \
+	< $(srcdir)/Xau.man > Xau.$(LIB_MAN_SUFFIX)
