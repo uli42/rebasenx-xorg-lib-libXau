@@ -31,7 +31,7 @@ pkgconfig_DATA = xau.pc
 
 libmandir = $(mandir)/man$(LIB_MAN_SUFFIX)
 libman_SOURCES = Xau.man
-BUILT_SOURCES = .shadows.DONE
+BUILT_SOURCES = shadows.DONE
 CLEANFILES = $(libman_DATA)
 libman_DATA = $(libman_SOURCES:man=$(LIB_MAN_SUFFIX)) \
 	      $(Xau_shadows:=.$(LIB_MAN_SUFFIX))
@@ -48,7 +48,7 @@ Xau_shadows =                               \
     XauGetAuthByAddr                        \
     XauGetBestAuthByAddr
 
-.shadows.DONE:
+shadows.DONE:
 	-rm -f $(Xau_shadows:=.$(LIB_MAN_SUFFIX))
 	(for i in $(Xau_shadows:=.$(LIB_MAN_SUFFIX)) ; do \
 	 echo .so man$(LIB_MAN_SUFFIX)/Xau.$(LIB_MAN_SUFFIX) > $$i; \
