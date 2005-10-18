@@ -33,8 +33,8 @@ libmandir = $(mandir)/man$(LIB_MAN_SUFFIX)
 libman_SOURCES = Xau.man
 BUILT_SOURCES = shadows.DONE
 CLEANFILES = $(libman_DATA)
-libman_DATA = $(libman_SOURCES:man=$(LIB_MAN_SUFFIX)) \
-	      $(Xau_shadows:=.$(LIB_MAN_SUFFIX))
+libman_DATA = $(libman_SOURCES:man=@LIB_MAN_SUFFIX@) \
+	      $(Xau_shadows:=.@LIB_MAN_SUFFIX@)
 
 EXTRA_DIST = xau.pc.in Autest.c $(libman_SOURCES)
 
@@ -49,8 +49,8 @@ Xau_shadows =                               \
     XauGetBestAuthByAddr
 
 shadows.DONE:
-	-rm -f $(Xau_shadows:=.$(LIB_MAN_SUFFIX))
-	(for i in $(Xau_shadows:=.$(LIB_MAN_SUFFIX)) ; do \
+	-rm -f $(Xau_shadows:=.@LIB_MAN_SUFFIX@)
+	(for i in $(Xau_shadows:=.@LIB_MAN_SUFFIX@) ; do \
 	 echo .so man$(LIB_MAN_SUFFIX)/Xau.$(LIB_MAN_SUFFIX) > $$i; \
 	 done)
 
