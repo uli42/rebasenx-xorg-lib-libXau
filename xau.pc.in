@@ -6,5 +6,6 @@ includedir=@includedir@
 Name: Xau
 Description: X authorization file management libary
 Version: @PACKAGE_VERSION@
-Libs: -L${libdir} -lXau
+Requires: xproto
 Cflags: -I${includedir}
+Libs: -L${libdir} -lXau
