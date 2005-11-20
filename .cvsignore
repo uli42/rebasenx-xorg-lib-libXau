@@ -1,3 +1,11 @@
+XauDisposeAuth.3
+XauFileName.3
+XauGetAuthByAddr.3
+XauGetBestAuthByAddr.3
+XauLockAuth.3
+XauReadAuth.3
+XauUnlockAuth.3
+XauWriteAuth.3
 aclocal.m4
 autom4te.cache
 config.guess
