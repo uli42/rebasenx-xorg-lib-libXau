@@ -29,7 +29,7 @@ xauinclude_HEADERS = include/X11/Xauth.h
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = xau.pc
 
-libmandir = $(mandir)/man$(LIB_MAN_SUFFIX)
+libmandir = $(LIB_MAN_DIR)
 libman_SOURCES = Xau.man
 BUILT_SOURCES = shadows.DONE
 CLEANFILES = $(libman_DATA)
