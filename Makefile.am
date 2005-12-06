@@ -30,13 +30,13 @@ pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = xau.pc
 
 libmandir = $(LIB_MAN_DIR)
-libman_SOURCES = Xau.man
+libman_PRE = Xau.man
 BUILT_SOURCES = shadows.DONE
 CLEANFILES = $(libman_DATA)
-libman_DATA = $(libman_SOURCES:man=@LIB_MAN_SUFFIX@) \
+libman_DATA = $(libman_PRE:man=@LIB_MAN_SUFFIX@) \
 	      $(Xau_shadows:=.@LIB_MAN_SUFFIX@)
 
-EXTRA_DIST = xau.pc.in Autest.c $(libman_SOURCES)
+EXTRA_DIST = xau.pc.in Autest.c $(libman_PRE)
 
 Xau_shadows =                               \
     XauFileName                             \
