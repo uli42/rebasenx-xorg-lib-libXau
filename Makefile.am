@@ -29,16 +29,22 @@ xauinclude_HEADERS = include/X11/Xauth.h
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = xau.pc
 
+check_PROGRAMS=Autest
+TESTS=Autest
+
+Autest_SOURCES=Autest.c
+Autest_LDADD=libXau.la
+
 LIB_MAN_DIR_SUFFIX = $(LIB_MAN_DIR:@mandir@/man%=%)
 
 libmandir = $(LIB_MAN_DIR)
 libman_PRE = Xau.man
 BUILT_SOURCES = shadows.DONE
-CLEANFILES = $(libman_DATA)
+CLEANFILES = $(libman_DATA) $(BUILT_SOURCES)
 libman_DATA = $(libman_PRE:man=@LIB_MAN_SUFFIX@) \
 	      $(Xau_shadows:=.@LIB_MAN_SUFFIX@)
 
-EXTRA_DIST = xau.pc.in Autest.c $(libman_PRE)
+EXTRA_DIST = xau.pc.in $(libman_PRE)
 
 Xau_shadows =                               \
     XauFileName                             \
@@ -55,6 +61,7 @@ shadows.DONE:
 	(for i in $(Xau_shadows:=.@LIB_MAN_SUFFIX@) ; do \
 	 echo .so man$(LIB_MAN_DIR_SUFFIX)/Xau.$(LIB_MAN_SUFFIX) > $$i; \
 	 done)
+	touch shadows.DONE
 
 XORGRELSTRING = @PACKAGE_STRING@
   XORGMANNAME = X Version 11
