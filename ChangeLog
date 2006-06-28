@@ -1,5 +1,12 @@
 2006-06-28  Alan Coopersmith  <alan.coopersmith@sun.com>
 
+	* configure.ac:
+	* Makefile.am:
+	Add "--with-lint" configure flag and "make lint" Makefile target
+	to check source code with lint, sparse or similar tools.
+
+2006-06-28  Alan Coopersmith  <alan.coopersmith@sun.com>	
+
 	* include/X11/Xauth.h: 
 	Remove prototype for XauGetAuthByName to clear lint warning:
 	name declared but never used or defined

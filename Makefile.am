@@ -35,6 +35,12 @@ TESTS=Autest
 Autest_SOURCES=Autest.c
 Autest_LDADD=libXau.la
 
+if LINT
+lint:
+	$(LINT) $(LINT_FLAGS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+		$(AM_CPPFLAGS) $(CPPFLAGS) $(libXau_la_SOURCES)
+endif LINT
+
 LIB_MAN_DIR_SUFFIX = $(LIB_MAN_DIR:@mandir@/man%=%)
 
 libmandir = $(LIB_MAN_DIR)
