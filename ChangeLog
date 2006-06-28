@@ -1,3 +1,19 @@
+2006-06-28  Alan Coopersmith  <alan.coopersmith@sun.com>
+
+	* include/X11/Xauth.h: 
+	Remove prototype for XauGetAuthByName to clear lint warning:
+	name declared but never used or defined
+
+ 	* AuDispose.c:
+	* AuFileName.c:
+	* AuGetAddr.c:
+	* AuGetBest.c:
+	* AuRead.c:
+	* AuWrite.c:
+	Fix sparse warnings:
+	-warning: Using plain integer as NULL pointer
+	-warning: non-ANSI definition of function
+
 2006-06-09  Alan Coopersmith  <alan.coopersmith@sun.com>
 
 	* Makefile.am:
