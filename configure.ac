@@ -63,7 +63,7 @@ dnl XXX incomplete, please fill this in
 fi
 
 dnl Allow checking code with lint, sparse, etc.
-XORG_ENABLE_LINT
+XORG_WITH_LINT
 LINT_FLAGS="${LINT_FLAGS} ${XAU_CFLAGS}"
 
 if test "x$GCC" = "xyes"; then
