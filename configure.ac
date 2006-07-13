@@ -62,30 +62,9 @@ dnl XXX incomplete, please fill this in
     XAU_CFLAGS="$XAU_CFLAGS $XTHREAD_CFLAGS"
 fi
 
-# Allow checking code with lint, sparse, etc.
-AC_ARG_WITH(lint, [AC_HELP_STRING([lint], 
-	    	[Use a lint-style source code checker (default: disabled)])])
-if test "x$with_lint" = "xyes" ; then
-	LINT="lint"
-else
-	LINT="$with_lint"
-fi
-if test "x$LINT_FLAGS" = "x" -a "x$LINT" != "xno" ; then
-    case $LINT in
-	lint|*/lint)
-	    case $host_os in
-		solaris*)
-			LINT_FLAGS="-u -b -h -erroff=E_INDISTING_FROM_TRUNC2"
-			;;
-	    esac
-	    ;;
-    esac	
-fi       
-
+dnl Allow checking code with lint, sparse, etc.
+XORG_ENABLE_LINT
 LINT_FLAGS="${LINT_FLAGS} ${XAU_CFLAGS}"
-AC_SUBST(LINT)
-AC_SUBST(LINT_FLAGS)
-AM_CONDITIONAL(LINT, [test x$LINT != xno])
 
 if test "x$GCC" = "xyes"; then
 	GCC_WARNINGS="-Wall -Wpointer-arith -Wstrict-prototypes \
