@@ -50,7 +50,7 @@ CLEANFILES = $(libman_DATA) $(BUILT_SOURCES)
 libman_DATA = $(libman_PRE:man=@LIB_MAN_SUFFIX@) \
 	      $(Xau_shadows:=.@LIB_MAN_SUFFIX@)
 
-EXTRA_DIST = xau.pc.in $(libman_PRE)
+EXTRA_DIST = xau.pc.in $(libman_PRE) ChangeLog
 
 Xau_shadows =                               \
     XauFileName                             \
@@ -75,3 +75,10 @@ XORGRELSTRING = @PACKAGE_STRING@
 Xau.$(LIB_MAN_SUFFIX): $(srcdir)/Xau.man
 	sed 's/__xorgversion__/"$(XORGRELSTRING)" "$(XORGMANNAME)"/' \
 	< $(srcdir)/Xau.man > Xau.$(LIB_MAN_SUFFIX)
+
+.PHONY: ChangeLog
+
+ChangeLog:
+	git-log > ChangeLog
+
+dist-hook: ChangeLog
