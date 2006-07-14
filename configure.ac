@@ -64,6 +64,7 @@ fi
 
 dnl Allow checking code with lint, sparse, etc.
 XORG_WITH_LINT
+XORG_LINT_LIBRARY([Xau])
 LINT_FLAGS="${LINT_FLAGS} ${XAU_CFLAGS}"
 
 if test "x$GCC" = "xyes"; then
