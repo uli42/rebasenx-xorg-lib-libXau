@@ -90,6 +90,6 @@ Xau.$(LIB_MAN_SUFFIX): $(srcdir)/Xau.man
 .PHONY: ChangeLog
 
 ChangeLog:
-	git-log > ChangeLog
+	GIT_DIR=${srcdir}/.git git-log > ChangeLog
 
 dist-hook: ChangeLog
