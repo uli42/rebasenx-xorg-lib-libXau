@@ -57,7 +57,7 @@ LIB_MAN_DIR_SUFFIX = $(LIB_MAN_DIR:@mandir@/man%=%)
 libmandir = $(LIB_MAN_DIR)
 libman_PRE = Xau.man
 BUILT_SOURCES = shadows.DONE
-CLEANFILES = $(libman_DATA) $(BUILT_SOURCES)
+CLEANFILES = $(libman_DATA) $(BUILT_SOURCES) $(lintlib_DATA)
 libman_DATA = $(libman_PRE:man=@LIB_MAN_SUFFIX@) \
 	      $(Xau_shadows:=.@LIB_MAN_SUFFIX@)
 
