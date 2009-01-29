@@ -30,4 +30,9 @@ missing
 mkinstalldirs
 stamp-h1
 xau.pc
+Xau.3
 *~
+*.o
+libXau-*tar.*
+ChangeLog
+tags

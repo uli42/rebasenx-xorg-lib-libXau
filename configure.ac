@@ -30,9 +30,9 @@ AM_MAINTAINER_MODE
 
 AM_CONFIG_HEADER(config.h)
 
-# Require xorg-macros version 1.1.0 or newer for XORG_WITH_LINT macro
-m4_ifndef([XORG_MACROS_VERSION], [AC_FATAL([must install xorg-macros 1.1 or later before running autoconf/autogen])])
-XORG_MACROS_VERSION(1.1)
+# Require xorg-macros: XORG_CWARNFLAGS, XORG_CHANGELOG, XORG_WITH_LINT
+m4_ifndef([XORG_MACROS_VERSION], [AC_FATAL([must install xorg-macros 1.2 or later before running autoconf/autogen])])
+XORG_MACROS_VERSION(1.2)
 
 AC_PROG_CC
 AC_PROG_INSTALL
@@ -40,8 +40,10 @@ AC_PROG_LN_S
 AC_LIBTOOL_WIN32_DLL
 AM_PROG_LIBTOOL
 AC_PROG_MAKE_SET
+XORG_CWARNFLAGS
 
 PKG_CHECK_MODULES(XAU, xproto)
+XAU_CFLAGS="$CWARNFLAGS $XAU_CFLAGS"
 AC_SUBST(XAU_CFLAGS)
 AC_SUBST(XAU_LIBS)
 
@@ -77,15 +79,9 @@ XORG_WITH_LINT
 XORG_LINT_LIBRARY([Xau])
 LINT_FLAGS="${LINT_FLAGS} ${XAU_CFLAGS}"
 
-if test "x$GCC" = "xyes"; then
-	GCC_WARNINGS="-Wall -Wpointer-arith -Wstrict-prototypes \
-	-Wmissing-prototypes -Wmissing-declarations \
-	-Wnested-externs -fno-strict-aliasing"
-	XAU_CFLAGS="$GCC_WARNINGS $XAU_CFLAGS"
-fi
-
 XORG_MANPAGE_SECTIONS
 XORG_RELEASE_VERSION
+XORG_CHANGELOG
 
 AC_OUTPUT([Makefile
            xau.pc])
