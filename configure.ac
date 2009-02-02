@@ -47,9 +47,6 @@ XAU_CFLAGS="$CWARNFLAGS $XAU_CFLAGS"
 AC_SUBST(XAU_CFLAGS)
 AC_SUBST(XAU_LIBS)
 
-kerberos=false
-AM_CONDITIONAL(KERBEROS, test x$kerberos = xtrue)
-
 AC_ARG_ENABLE(xthreads,
               AC_HELP_STRING([--disable-xthreads],
                 [Disable libXau support for Multithreading]),

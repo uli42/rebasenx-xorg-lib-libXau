@@ -53,7 +53,6 @@ typedef struct xauth {
 # define FamilyLocal (256)	/* not part of X standard (i.e. X.h) */
 # define FamilyWild  (65535)
 # define FamilyNetname    (254)   /* not part of X standard */
-# define FamilyKrb5Principal (253) /* Kerberos 5 principal name */
 # define FamilyLocalHost (252)	/* for local non-net authentication */
 
 
@@ -127,23 +126,6 @@ _Xconst int*	/* type_lengths */
 void XauDisposeAuth(
 Xauth*		/* auth */
 );
-
-#ifdef K5AUTH
-#include <krb5/krb5.h>
-/* 9/93: krb5.h leaks some symbols */
-#undef BITS32
-#undef xfree
-
-int XauKrb5Encode(
-     krb5_principal	/* princ */,
-     krb5_data *	/* outbuf */
-);
-
-int XauKrb5Decode(
-     krb5_data		/* inbuf */,
-     krb5_principal *	/* princ */
-);
-#endif /* K5AUTH */
 
 _XFUNCPROTOEND
 

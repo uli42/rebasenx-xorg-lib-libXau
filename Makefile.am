@@ -18,10 +18,6 @@ libXau_la_SOURCES = \
 	AuUnlock.c \
 	AuWrite.c
 
-if KERBEROS
-libXau_la_SOURCES +=k5encode.c
-endif KERBEROS
-
 xauincludedir=$(includedir)/X11
 
 xauinclude_HEADERS = include/X11/Xauth.h
