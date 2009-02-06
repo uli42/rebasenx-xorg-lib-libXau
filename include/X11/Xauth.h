@@ -53,6 +53,7 @@ typedef struct xauth {
 # define FamilyLocal (256)	/* not part of X standard (i.e. X.h) */
 # define FamilyWild  (65535)
 # define FamilyNetname    (254)   /* not part of X standard */
+# define FamilyKrb5Principal (253) /* Kerberos 5 principal name */
 # define FamilyLocalHost (252)	/* for local non-net authentication */
 
 
