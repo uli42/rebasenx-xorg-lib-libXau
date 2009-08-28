@@ -24,7 +24,7 @@ dnl
 dnl Process this file with autoconf to create configure.
 
 AC_PREREQ([2.57])
-AC_INIT(libXau, 1.0.4, [https://bugs.freedesktop.org/enter_bug.cgi?product=xorg],libXau)
+AC_INIT(libXau, 1.0.5, [https://bugs.freedesktop.org/enter_bug.cgi?product=xorg],libXau)
 AM_INIT_AUTOMAKE([dist-bzip2])
 AM_MAINTAINER_MODE
 
