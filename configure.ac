@@ -30,9 +30,11 @@ AM_MAINTAINER_MODE
 
 AM_CONFIG_HEADER(config.h)
 
-# Require xorg-macros: XORG_CWARNFLAGS, XORG_CHANGELOG, XORG_WITH_LINT
-m4_ifndef([XORG_MACROS_VERSION], [AC_FATAL([must install xorg-macros 1.2 or later before running autoconf/autogen])])
-XORG_MACROS_VERSION(1.2)
+# Require xorg-macros: XORG_DEFAULT_OPTIONS
+m4_ifndef([XORG_MACROS_VERSION],
+          [m4_fatal([must install xorg-macros 1.3 or later before running autoconf/autogen])])
+XORG_MACROS_VERSION(1.3)
+XORG_DEFAULT_OPTIONS
 
 AC_PROG_CC
 AC_PROG_INSTALL
@@ -40,7 +42,6 @@ AC_PROG_LN_S
 AC_LIBTOOL_WIN32_DLL
 AM_PROG_LIBTOOL
 AC_PROG_MAKE_SET
-XORG_CWARNFLAGS
 
 PKG_CHECK_MODULES(XAU, xproto)
 XAU_CFLAGS="$CWARNFLAGS $XAU_CFLAGS"
@@ -76,9 +77,6 @@ XORG_WITH_LINT
 XORG_LINT_LIBRARY([Xau])
 LINT_FLAGS="${LINT_FLAGS} ${XAU_CFLAGS}"
 
-XORG_MANPAGE_SECTIONS
-XORG_RELEASE_VERSION
-XORG_CHANGELOG
 
 AC_OUTPUT([Makefile
            xau.pc])
