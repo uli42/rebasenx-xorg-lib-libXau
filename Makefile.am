@@ -80,9 +80,12 @@ Xau.$(LIB_MAN_SUFFIX): $(srcdir)/Xau.man
 	sed 's/__xorgversion__/"$(XORGRELSTRING)" "$(XORGMANNAME)"/' \
 	< $(srcdir)/Xau.man > Xau.$(LIB_MAN_SUFFIX)
 
-.PHONY: ChangeLog
+.PHONY: ChangeLog INSTALL
+
+INSTALL:
+	$(INSTALL_CMD)
 
 ChangeLog:
 	$(CHANGELOG_CMD)
 
-dist-hook: ChangeLog
+dist-hook: ChangeLog INSTALL
