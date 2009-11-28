@@ -57,6 +57,7 @@ CLEANFILES = $(libman_DATA) $(BUILT_SOURCES) $(lintlib_DATA)
 libman_DATA = $(libman_PRE:man=@LIB_MAN_SUFFIX@) \
 	      $(Xau_shadows:=.@LIB_MAN_SUFFIX@)
 
+MAINTAINERCLEANFILES = ChangeLog INSTALL
 EXTRA_DIST = xau.pc.in $(libman_PRE) 
 
 Xau_shadows =                               \
