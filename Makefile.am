@@ -1,6 +1,6 @@
 lib_LTLIBRARIES = libXau.la
 
-AM_CFLAGS = $(XAU_CFLAGS)
+AM_CFLAGS = $(XAU_CFLAGS) $(CWARNFLAGS)
 
 INCLUDES = -I${top_srcdir}/include
 
