@@ -78,7 +78,7 @@ XORGRELSTRING = @PACKAGE_STRING@
   XORGMANNAME = X Version 11
 
 Xau.$(LIB_MAN_SUFFIX): $(srcdir)/Xau.man
-	$(AM_V_GEN)sed \
+	$(AM_V_GEN)$(SED) \
 		-e 's/__xorgversion__/"$(XORGRELSTRING)" "$(XORGMANNAME)"/' \
 	< $(srcdir)/Xau.man > Xau.$(LIB_MAN_SUFFIX)
 
