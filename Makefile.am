@@ -72,13 +72,14 @@ Xau_shadows =                               \
 
 Xau_shadows_man = $(Xau_shadows:=.@LIB_MAN_SUFFIX@)
 $(Xau_shadows_man):
-	echo .so man$(LIB_MAN_DIR_SUFFIX)/Xau.$(LIB_MAN_SUFFIX) > $@
+	$(AM_V_GEN)echo .so man$(LIB_MAN_DIR_SUFFIX)/Xau.$(LIB_MAN_SUFFIX) > $@
 
 XORGRELSTRING = @PACKAGE_STRING@
   XORGMANNAME = X Version 11
 
 Xau.$(LIB_MAN_SUFFIX): $(srcdir)/Xau.man
-	sed 's/__xorgversion__/"$(XORGRELSTRING)" "$(XORGMANNAME)"/' \
+	$(AM_V_GEN)sed \
+		-e 's/__xorgversion__/"$(XORGRELSTRING)" "$(XORGMANNAME)"/' \
 	< $(srcdir)/Xau.man > Xau.$(LIB_MAN_SUFFIX)
 
 .PHONY: ChangeLog INSTALL
