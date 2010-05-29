@@ -59,7 +59,8 @@ int XauWriteAuth (FILE *\fIauth_file\fP, Xauth *\fIauth\fP\^);
 .HP
 Xauth *XauGetAuthByAddr (unsigned short \fIfamily\fP\^, unsigned short
 \fIaddress_length\fP\^, char *\fIaddress\fP\^, unsigned short
-\fInumber_length\fP\^, char *\fInumber\fP\^);
+\fInumber_length\fP\^, char *\fInumber\fP\^, unsigned short
+\fIname_length\fP\^, char *\fIname\fP\^);
 .HP
 Xauth *XauGetBestAuthByAddr (unsigned short \fIfamily\fP\^, unsigned short
 \fIaddress_length\fP\^, char *\fIaddress\fP\^, unsigned short
