@@ -28,7 +28,7 @@
 .\"
 .\" $XFree86: xc/doc/man/Xau/Xau.man,v 1.2 2001/01/27 18:20:19 dawes Exp $
 .\"
-.TH Xau 3 __xorgversion__
+.TH Xau __libmansuffix__ __xorgversion__
 .SH NAME
 Xau library: XauFileName, XauReadAuth, XauLockAuth, XauUnlockAuth,
 XauWriteAuth, XauDisposeAuth,
