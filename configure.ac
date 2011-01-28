@@ -41,7 +41,7 @@ AM_PROG_LIBTOOL
 PKG_CHECK_MODULES(XAU, xproto)
 
 AC_ARG_ENABLE(xthreads,
-              AC_HELP_STRING([--disable-xthreads],
+              AS_HELP_STRING([--disable-xthreads],
                 [Disable libXau support for Multithreading]),
               [xthreads=$enableval],[xthreads=yes])
 
