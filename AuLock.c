@@ -33,15 +33,12 @@ in this Software without prior written authorization from The Open Group.
 #include <errno.h>
 #include <time.h>
 #define Time_t time_t
-#ifndef X_NOT_POSIX
-#include <unistd.h>
-#else
-#ifndef WIN32
-extern unsigned	sleep ();
-#else
-#include <X11/Xwindows.h>
-#define link rename
+#ifdef HAVE_UNISTD_H
+# include <unistd.h>
 #endif
+#ifdef WIN32
+# include <X11/Xwindows.h>
+# define link rename
 #endif
 
 int
