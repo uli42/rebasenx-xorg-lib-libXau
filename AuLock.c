@@ -84,7 +84,7 @@ long	dead)
 		(void) close (creat_fd);
 	}
 	if (creat_fd != -1) {
-#ifndef X_NOT_POSIX
+#ifdef HAVE_PATHCONF
 	    /* The file system may not support hard links, and pathconf should tell us that. */
 	    if (1 == pathconf(creat_name, _PC_LINK_MAX)) {
 		if (-1 == rename(creat_name, link_name)) {
@@ -93,8 +93,9 @@ long	dead)
 		} else {
 		    return LOCK_SUCCESS;
 		}
-	    } else {
+	    } else
 #endif
+	    {
 	    	if (link (creat_name, link_name) != -1)
 		    return LOCK_SUCCESS;
 		if (errno == ENOENT) {
@@ -103,9 +104,7 @@ long	dead)
 	    	}
 	    	if (errno != EEXIST)
 		    return LOCK_ERROR;
-#ifndef X_NOT_POSIX
 	   }
-#endif
 	}
 	(void) sleep ((unsigned) timeout);
 	--retries;
