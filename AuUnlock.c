@@ -49,9 +49,9 @@ _Xconst char *file_name)
      * I think this is the correct order
      */
 #ifndef WIN32
-    (void) unlink (creat_name);
+    (void) remove (creat_name);
 #endif
-    (void) unlink (link_name);
+    (void) remove (link_name);
 
     return 1;
 }

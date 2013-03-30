@@ -64,8 +64,8 @@ long	dead)
 	 * case a 0 deadtime to force lock removal
 	 */
 	if (dead == 0 || now - statb.st_ctime > dead) {
-	    (void) unlink (creat_name);
-	    (void) unlink (link_name);
+	    (void) remove (creat_name);
+	    (void) remove (link_name);
 	}
     }
 
