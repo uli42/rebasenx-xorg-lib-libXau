@@ -55,10 +55,8 @@ long	dead)
 
     if (strlen (file_name) > 1022)
 	return LOCK_ERROR;
-    (void) strcpy (creat_name, file_name);
-    (void) strcat (creat_name, "-c");
-    (void) strcpy (link_name, file_name);
-    (void) strcat (link_name, "-l");
+    snprintf (creat_name, sizeof(creat_name), "%s-c", file_name);
+    snprintf (link_name, sizeof(link_name), "%s-l", file_name);
     if (stat (creat_name, &statb) != -1) {
 	now = time ((Time_t *) 0);
 	/*
