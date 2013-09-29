@@ -70,8 +70,10 @@ XauFileName (void)
 	if (buf)
 	    free (buf);
 	buf = malloc (size);
-	if (!buf)
+	if (!buf) {
+	    bsize = 0;
 	    return NULL;
+	}
 
         if (!atexit_registered) {
             atexit(free_filename_buffer);
